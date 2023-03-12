@@ -63,10 +63,8 @@ exports.deleteTasks = async (req,res)=>{
 
     console.log(ans)
 
-     await user.tasks.splice(ans,1)
-
-     console.log(user)
-
+    await user.tasks.splice(ans,1)
+    
     user.save()
 
     res.status(200).json({
