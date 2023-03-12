@@ -60,7 +60,7 @@ res.status(200).send(data)
 
 }
 
-exports.deleteTodo = async (req,res)=>{
+exports.deleteTasks = async (req,res)=>{
 
     const {id} = req.params
 
@@ -84,7 +84,7 @@ exports.deleteTodo = async (req,res)=>{
     })
 }
 
-exports.updateTodo=async (req,res)=>{
+exports.updateTasks=async (req,res)=>{
     const {id} = req.params
 
     console.log(id)
@@ -100,6 +100,18 @@ exports.updateTodo=async (req,res)=>{
         user
     })
 }
+
+exports.deleteTodo =async (req,res)=>{
+    const {id} = req.params
+
+    const user = await Todo.findByIdAndDelete(id)
+
+    res.status(200).json({
+        success:true,
+        message:"todo delete successfully"
+    })
+}
+
 
 exports.home=(req,res)=>{
     res.send("running successfully")
