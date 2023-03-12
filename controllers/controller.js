@@ -1,5 +1,4 @@
 const mongoose = require("mongoose")
-const { findById } = require("../model/todo.js")
 
 const Todo = require("../model/todo.js")
 
