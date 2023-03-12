@@ -11,10 +11,10 @@ router.get("/",home)
 
 router.post("/createtask/:id",createTask)
 
-router.delete("/deleteTodo/:id",deleteTodo)
+router.delete("/deletetask/:id",deleteTodo)
 
 router.get("/getAllTodos",getAllTodos)
 
-// router.put("/updatetodo/:id",updateTodo)
+router.put("/updatetodo/:id",updateTodo)
 
 module.exports = router

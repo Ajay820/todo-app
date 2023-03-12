@@ -1,4 +1,5 @@
 const mongoose = require("mongoose")
+const { findById } = require("../model/todo.js")
 
 const Todo = require("../model/todo.js")
 
@@ -58,6 +59,47 @@ const data = todos.map((todo)=>(todo.title))
 
 res.status(200).send(data)
 
+}
+
+exports.deleteTodo = async (req,res)=>{
+
+    const {id} = req.params
+
+    const {tasks} = req.body
+
+    const user = await Todo.findById(id)
+
+    const ans = user.tasks.indexOf(tasks)
+
+    console.log(ans)
+
+     await user.tasks.splice(ans,1)
+
+     console.log(user)
+
+    user.save()
+
+    res.status(200).json({
+        success:true,
+        user
+    })
+}
+
+exports.updateTodo=async (req,res)=>{
+    const {id} = req.params
+
+    console.log(id)
+    
+    const {tasks} = req.body
+
+    console.log(tasks)
+    
+    const user = await Todo.findByIdAndUpdate(id,tasks)
+    
+    res.status(200).json({
+        success:true,
+        user
+    })
 }
 
 exports.home=(req,res)=>{
