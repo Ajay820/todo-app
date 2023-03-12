@@ -39,18 +39,9 @@ exports.createTask = async (req,res)=>{
 
 }
 
-exports.deleteTodo= async (req,res)=>{
-
-    const {id} = req.params
-
-    const user = await Todo.findByIdAndDelete(id)
-
-    res.status(200).json({user})
-}
-
 exports.getAllTodos=async (req,res)=>{
 
-    const user = await Todo.find()
+const user = await Todo.find()
 
 const todos = user
 
